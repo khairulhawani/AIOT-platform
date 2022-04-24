@@ -1,4 +1,4 @@
-version: '1.0'
+version: '3.3'
 
 services:
   #A database service: Hawani
@@ -14,9 +14,15 @@ services:
 
 
   #An analysis service: Pierre
+  jupyter:
+    image: jupyter/datascience-notebook
+    volumes:
+     - ./notebooks/:/notebooks
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=1
+    command: start-notebook.sh --NotebookApp.notebook_dir=/notebooks
 
-
-
-
-volumes:
+# volumes:
   

@@ -2,8 +2,19 @@ version: '3.3'
 
 services:
   #A database service: Hawani
-
-
+  db:
+      image: mysql
+      command: --default-authentication-plugin=mysql_native_password
+      restart: always
+      environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: mydb
+          MYSQL_USER: user
+          MYSQL_PASSWORD: user
+      volumes:
+          - "./db:/db"
+      ports:
+        - 8080:8080
 
   #A dashboard service: Plai
 

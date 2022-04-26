@@ -7,10 +7,7 @@ services:
       command: --default-authentication-plugin=mysql_native_password
       restart: always
       environment:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: mydb
-          MYSQL_USER: user
-          MYSQL_PASSWORD: user
+          MYSQL_ROOT_PASSWORD: password
       volumes:
           - "./db:/db"
       ports:

@@ -54,22 +54,8 @@ services:
 networks:
   rabbitmq_go_net:
     driver: bridge
-
-
-  #An analysis service: Pierre
-  jupyter:
-    image: jupyter/datascience-notebook
-    volumes:
-     - ./notebooks/:/notebooks
-    ports:
-      - "8888:8888"
-    environment:
-      - JUPYTER_ENABLE_LAB=1
-    command: start-notebook.sh --NotebookApp.notebook_dir=/notebooks
-
-# volumes:
-
-package main
+    
+    package main
 
 import (
 	"log"
@@ -176,4 +162,20 @@ func main() {
 	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
 	<-forever
 }
+
+
+  #An analysis service: Pierre
+  jupyter:
+    image: jupyter/datascience-notebook
+    volumes:
+     - ./notebooks/:/notebooks
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=1
+    command: start-notebook.sh --NotebookApp.notebook_dir=/notebooks
+
+# volumes:
+
+
   

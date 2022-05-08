@@ -3,7 +3,7 @@ version: '3.3'
 services:
   #A database service: Hawani
   db:
-      image: mysql/mysql:latest
+      image: mysql
       container_name: mysqldb
       command: --default-authentication-plugin=mysql_native_password
       restart: always
@@ -12,7 +12,7 @@ services:
       volumes:
           - "./db:db"
       ports:
-        - 3306:3306
+        - 8080:8080
 
   #A dashboard service: Plai
   grafana:

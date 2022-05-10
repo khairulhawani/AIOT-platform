@@ -12,6 +12,10 @@ services:
           MYSQL_DATABASE: mydb
           MYSQL_USER: user
           MYSQL_PASSWORD: user
+      ports:
+        - 3306:3306
+      expose:
+        - '3306'
       volumes:
           - ./db:/docker-entrypoint-initdb.d
   adminer:
@@ -35,6 +39,8 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     ports:
       - 3000:3000
+    links:
+      - db
     user: 1000:1000
     volumes:
       - ./grafana/build:/var/lib/grafana/dashboards

@@ -31,7 +31,7 @@ Clone this repository:
 git clone https://github.com/khairulhawani/AIOT-platform.git
 ``` 
 
-Run docker-compose up command inside the directory:
+Run this command inside the directory to start:
 ```
 docker-compose up -d
 ```
@@ -42,4 +42,9 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:3000 --> Grafana
 {your_ip_address or localhost}:8888 --> Jupyter
 {your_ip_address or localhost}:15672 --> RabbitMQ
+```
+
+Run this command inside the directory to stop:
+```
+docker-compose down
 ```

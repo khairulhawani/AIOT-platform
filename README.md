@@ -5,7 +5,8 @@
 ![service](service.jpg)
 
 1. A database service: ***MySQL*** with port ```3306```  
- Relational database for managing devices, a time series database for storing sensor tags.
+ Relational database for managing devices, a time series database for storing sensor tags.  
+ (Using port ```8080``` to access the service ```adminer``` for managing the database.)
 
 2. A dashboard service: ***Grafana*** with port ```3000```  
 Capability to visualize the device topology, sensor tags and events.

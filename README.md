@@ -44,7 +44,7 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:15672 --> RabbitMQ
 ```
 
-Run this command inside the directory to stop:
+Run this command inside the directory to stop and clean:
 ```
 docker-compose down
 ```

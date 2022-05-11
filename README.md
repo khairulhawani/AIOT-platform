@@ -31,7 +31,7 @@ Clone this repository:
 git clone https://github.com/khairulhawani/AIOT-platform.git
 ``` 
 
-Run this command inside the directory to start:
+Run this command inside the directory to pull the image:
 ```
 docker-compose up -d
 ```
@@ -44,7 +44,17 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:15672 --> RabbitMQ
 ```
 
-Run this command inside the directory to stop and clean:
+Run this command inside the directory to start:
+```
+docker-compose start
+```
+
+Run this command inside the directory to stop:
+```
+docker-compose stop
+```
+
+Run this command inside the directory to clean:
 ```
 docker-compose down
 ```

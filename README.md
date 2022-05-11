@@ -26,4 +26,5 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:8080 --> Database
 {your_ip_address or localhost}:3000 --> Grafana
 {your_ip_address or localhost}:8888 --> Jupyter
+{your_ip_address or localhost}:15672 --> RabbitMQ
 ```

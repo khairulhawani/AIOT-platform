@@ -59,3 +59,6 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:8888 --> Jupyter
 {your_ip_address or localhost}:15672 --> RabbitMQ
 ```
+
+If you need more specific command you can refer to the Docker documentation
+https://docs.docker.com/

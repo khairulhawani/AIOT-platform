@@ -1,7 +1,17 @@
 # AIOT-platform
 
 ## Service
-xxxxxxxxxxxxxxxxx
+1. A database service: ***MySQL*** with port ```3306```  
+ with a relational database for managing devices, a time series database for storing sensor tags. you can make own decision on the data stored for the events.
+
+2. A dashboard service: ***Grafana*** with port ```3000```  
+with capability to visualize the device topology, sensor tags and events.
+
+3. A messaging service: ***RabbitMQ*** with port ```15672```  
+receiving and buffering the sensor tags.
+
+4. An analysis service: ***Jupyter*** with port ```8888```  
+for building models (rule-based or AI-based), analysing the data and mining the useful patterns from the data.
 
 
 ## Operation

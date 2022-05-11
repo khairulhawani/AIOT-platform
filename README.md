@@ -31,30 +31,31 @@ Clone this repository:
 git clone https://github.com/khairulhawani/AIOT-platform.git
 ``` 
 
-Run this command inside the directory to pull the image:
+Run this command inside the directory to pull the image (initialize):
 ```
 docker-compose up -d
 ```
 
+Run this command inside the directory to start the service:
+```
+docker-compose start
+```
+
+Run this command inside the directory to stop the service:
+```
+docker-compose stop
+```
+
+Run this command inside the directory to clean the service:
+```
+docker-compose down
+```
+
+## Application Endpoint
 You can check the container working by checking with:
 ```
 {your_ip_address or localhost}:8080 --> Database Adminer
 {your_ip_address or localhost}:3000 --> Grafana
 {your_ip_address or localhost}:8888 --> Jupyter
 {your_ip_address or localhost}:15672 --> RabbitMQ
-```
-
-Run this command inside the directory to start:
-```
-docker-compose start
-```
-
-Run this command inside the directory to stop:
-```
-docker-compose stop
-```
-
-Run this command inside the directory to clean:
-```
-docker-compose down
 ```

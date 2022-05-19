@@ -4,7 +4,7 @@ services:
   #A database service: Hawani
   db:
       image: mysql
-      container_name: mysqldb
+      container_name: mysqldb_container
       command: --default-authentication-plugin=mysql_native_password
       restart: always
       environment:
@@ -19,15 +19,17 @@ services:
       volumes:
           - ./db:/docker-entrypoint-initdb.d
   adminer:
-        image: adminer
-        restart: always
-        ports:
-            - 8080:8080
+      image: adminer
+      container_name: adminer_container
+      restart: always
+      ports:
+        - 8080:8080
 
   #A dashboard service: Plai
   grafana:
     image: grafana/grafana:latest
     container_name: grafana_container
+    restart: always
     environment:
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
       - GF_PATHS_PROVISIONING=/var/lib/grafana/provisioning
@@ -50,7 +52,8 @@ services:
   #A messaging service: Hassan
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    container_name: 'rabbitmq'
+    container_name: rabbitmq_container
+    restart: always
     ports:
         - 5672:5672
         - 15672:15672
@@ -63,6 +66,8 @@ services:
   #An analysis service: Pierre
   jupyter:
     image: jupyter/datascience-notebook
+    container_name: jupyter_container
+    restart: always
     volumes:
      - ./notebooks/:/notebooks
     ports:

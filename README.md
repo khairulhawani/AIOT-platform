@@ -61,5 +61,25 @@ You can check the container working by checking with:
 {your_ip_address or localhost}:15672 --> RabbitMQ
 ```
 
+## List the User to Login
+Login Adminer
+```
+DB : mydb
+Username : user
+Password : user
+```
+
+Login Grafana
+```
+Username : admin
+Password : admin
+```
+
+Login RabbitMQ
+```
+Username : guest
+Password : guest
+```
+
 If you need more specific command you can refer to the Docker documentation
 https://docs.docker.com/

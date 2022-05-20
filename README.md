@@ -62,7 +62,8 @@ You can check the container working by checking with:
 ```
 
 ## List the User to Login
-You can login to the service:
+You can login to the service with:
+
 Login Adminer
 ```
 DB : mydb

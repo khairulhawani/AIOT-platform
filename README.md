@@ -51,6 +51,11 @@ Run this command inside the directory to clean the service:
 docker-compose down
 ```
 
+Run this command inside the directory to receive message from my local PC
+```
+python3 receive.py
+```
+
 ## Application Endpoint
 You can check the container working by checking with:
 ```

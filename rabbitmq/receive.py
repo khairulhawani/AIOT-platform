@@ -16,7 +16,7 @@ def main():
     )
 
     def callback(ch, method, properties, body):
-        body = body.decode('UTF-8')
+        body = body.decode('UTF-8').split(", ")
         timestamp = body[0] 
         min = body[1]
         max = body[2]

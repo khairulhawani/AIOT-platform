@@ -69,6 +69,7 @@ Adminer Login
 DB : mydb
 Username : user
 Password : user
+Port : 3306
 ```
 
 Grafana Login 

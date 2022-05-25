@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import pika, sys, os
+import mysql.connector
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
@@ -7,8 +8,32 @@ def main():
 
     channel.queue_declare(queue='sensor')
 
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="user",
+        password="user",
+        database="mydb"
+    )
+
     def callback(ch, method, properties, body):
-        print(" [x] Received %r" % body)
+        timestamp = body[0] 
+        min = body[1]
+        max = body[2]
+        avg = body[3]
+        peak = body[4]
+        peaktopeak = body[5]
+        rms = body[6]
+
+        mycursor = mydb.cursor()
+
+        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms) VALUES (" + timestamp + ", " + min + ", " + max + ", " + avg + ", " + peak + ", " + peaktopeak + ", " + rms + ")"
+        mycursor.execute(sql)
+
+        mydb.commit()
+
+        # print(mycursor.rowcount, "record inserted.")
+
+        # print(" [x] Received %r" % body)
 
     channel.basic_consume(queue='sensor', on_message_callback=callback, auto_ack=True)
 

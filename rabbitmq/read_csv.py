@@ -1,13 +1,14 @@
 import os
 import csv
 import pandas as pd
+import pika
 
 index_row = 0
 last_row = 0
 result_array = []
 
 # Change this according to your folder path
-path = "E:\\Documents\\National Pingtung University\\Advanced Information Management\\Sensor Data"
+path = "C:\\Advantech\\WISE750\\feature\\ch0"
 
 try:
     while True:
@@ -21,6 +22,15 @@ try:
                         continue
                     else:
                         result_array.append(row)
+                        connection = pika.BlockingConnection(
+                            pika.ConnectionParameters(host='203.145.218.196'))
+                        channel = connection.channel()
+
+                        channel.queue_declare(queue='sensor')
+
+                        channel.basic_publish(exchange='', routing_key='sensor', body=row)
+                        print(" [x] Sent")
+                        connection.close()
 
         last_row = index_row
         index_row = 0
@@ -28,3 +38,4 @@ try:
 except KeyboardInterrupt:
     print("Interrupted")
     print(pd.DataFrame(result_array))
+    print(result_array[0])

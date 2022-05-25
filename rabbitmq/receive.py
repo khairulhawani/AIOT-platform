@@ -16,6 +16,7 @@ def main():
     )
 
     def callback(ch, method, properties, body):
+        body = body[2:-1]
         timestamp = body[0] 
         min = body[1]
         max = body[2]
@@ -26,7 +27,7 @@ def main():
 
         mycursor = mydb.cursor()
 
-        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms) VALUES (" + str(timestamp) + ", " + str(min) + ", " + str(max) + ", " + str(avg) + ", " + str(peak) + ", " + str(peaktopeak) + ", " + str(rms) + ")"
+        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms) VALUES ('" + str(timestamp) + "', '" + str(min) + "', '" + str(max) + "', '" + str(avg) + "', '" + str(peak) + "', '" + str(peaktopeak) + "', '" + str(rms) + "')"
         mycursor.execute(sql)
 
         mydb.commit()

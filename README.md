@@ -62,7 +62,7 @@ You can check the container working by checking with:
 ```
 
 ## List the User to Login
-You can login to the service with:
+You can login to the service (Application Endpoint Section) with:
 
 Adminer Login 
 ```
@@ -77,10 +77,12 @@ Username : admin
 Password : admin
 ```
 
-RabbitMQ Login 
+RabbitMQ Credentials
 ```
+IP Address : 203.145.218.196 (Or Local IP Address)
 Username : guest
 Password : guest
+AMQP Port : 5672
 ```
 
 If you need more specific command you can refer to the Docker documentation

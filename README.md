@@ -103,3 +103,8 @@ Run this command inside the rabbitmq directory to send the message:
 python3 send.py
 
 ```
+Run this command inside the rabbitmq directory to read and send data from the sensor:
+```
+python3 read_csv.py
+
+```

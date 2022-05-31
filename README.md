@@ -92,13 +92,13 @@ https://docs.docker.com/
 ## How to Use the File in RabbitMQ
 You can use the file in RabbitMQ
 
-Run this command inside the rabbitmq directory to receive the message:
+Run this command inside the rabbitmq directory to receive the data from sensor:
 ```
 python3 receive.py
 
 ```
 
-Run this command inside the rabbitmq directory to send the message:
+Run this command inside the rabbitmq directory to send the data from sensor:
 ```
 python3 send.py
 

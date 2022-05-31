@@ -2,7 +2,7 @@
 import pika
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='203.145.218.196'))
+    pika.ConnectionParameters('amqp://guest:guest@203.145.218.196:5672/'))
 channel = connection.channel()
 
 channel.queue_declare(queue='sensor')

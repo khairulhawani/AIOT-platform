@@ -28,7 +28,7 @@ try:
 
                         channel.queue_declare(queue='sensor')
 
-                        channel.basic_publish(exchange='', routing_key='sensor', body=row)
+                        channel.basic_publish(exchange='', routing_key='sensor', body=row.encode('UTF-8'))
                         print(" [x] Sent")
                         connection.close()
 

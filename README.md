@@ -88,3 +88,18 @@ AMQP Port : 5672
 
 If you need more specific command you can refer to the Docker documentation
 https://docs.docker.com/
+
+## How to Use The File in RabbitMQ
+You can use the file in RabbitMQ
+
+Run this command inside the rabbitmq directory to receive the message:
+```
+python3 receive.py
+
+```
+
+Run this command inside the rabbitmq directory to send the message:
+```
+python3 send.py
+
+```

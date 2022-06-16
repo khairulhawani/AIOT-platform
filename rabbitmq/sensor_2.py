@@ -26,9 +26,9 @@ try:
                             pika.ConnectionParameters(host='203.145.218.196'))
                         channel = connection.channel()
 
-                        channel.queue_declare(queue='sensor')
+                        channel.queue_declare(queue='sensor2')
 
-                        channel.basic_publish(exchange='', routing_key='sensor', body=row.encode('UTF-8'))
+                        channel.basic_publish(exchange='', routing_key='sensor2', body=row.encode('UTF-8'))
                         print(" [x] Sent")
                         connection.close()
 

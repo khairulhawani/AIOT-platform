@@ -15,7 +15,7 @@ def main():
         database="mydb"
     )
 
-    def callback(ch, method, properties, body):
+    def callback_sensor1(ch, method, properties, body):
         body = body.decode('UTF-8').split(", ")
         timestamp = body[0] 
         min = body[1]
@@ -27,7 +27,7 @@ def main():
 
         mycursor = mydb.cursor()
 
-        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms) VALUES (" + str(timestamp) + ", " + str(min) + ", " + str(max) + ", " + str(avg) + ", " + str(peak) + ", " + str(peaktopeak) + ", " + str(rms) + ")"
+        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms, sensor_id) VALUES (" + str(timestamp) + ", " + str(min) + ", " + str(max) + ", " + str(avg) + ", " + str(peak) + ", " + str(peaktopeak) + ", " + str(rms) + ", 1)"
         mycursor.execute(sql)
 
         mydb.commit()
@@ -36,7 +36,51 @@ def main():
 
         # print(" [x] Received %r" % body)
 
-    channel.basic_consume(queue='sensor', on_message_callback=callback, auto_ack=True)
+    def callback_sensor2(ch, method, properties, body):
+        body = body.decode('UTF-8').split(", ")
+        timestamp = body[0] 
+        min = body[1]
+        max = body[2]
+        avg = body[3]
+        peak = body[4]
+        peaktopeak = body[5]
+        rms = body[6]
+
+        mycursor = mydb.cursor()
+
+        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms, sensor_id) VALUES (" + str(timestamp) + ", " + str(min) + ", " + str(max) + ", " + str(avg) + ", " + str(peak) + ", " + str(peaktopeak) + ", " + str(rms) + ", 2)"
+        mycursor.execute(sql)
+
+        mydb.commit()
+
+        # print(mycursor.rowcount, "record inserted.")
+
+        # print(" [x] Received %r" % body)
+
+    def callback_sensor3(ch, method, properties, body):
+        body = body.decode('UTF-8').split(", ")
+        timestamp = body[0] 
+        min = body[1]
+        max = body[2]
+        avg = body[3]
+        peak = body[4]
+        peaktopeak = body[5]
+        rms = body[6]
+
+        mycursor = mydb.cursor()
+
+        sql = "INSERT INTO tb_sensor (timestamp, min, max, avg, peak, peaktopeak, rms, sensor_id) VALUES (" + str(timestamp) + ", " + str(min) + ", " + str(max) + ", " + str(avg) + ", " + str(peak) + ", " + str(peaktopeak) + ", " + str(rms) + ", 3)"
+        mycursor.execute(sql)
+
+        mydb.commit()
+
+        # print(mycursor.rowcount, "record inserted.")
+
+        # print(" [x] Received %r" % body)
+
+    channel.basic_consume(queue='sensor1', on_message_callback=callback_sensor1, auto_ack=True)
+    channel.basic_consume(queue='sensor2', on_message_callback=callback_sensor2, auto_ack=True)
+    channel.basic_consume(queue='sensor3', on_message_callback=callback_sensor3, auto_ack=True)
 
     print(' [*] Waiting for messages. To exit press CTRL+C')
     channel.start_consuming()

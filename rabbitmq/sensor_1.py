@@ -8,7 +8,7 @@ last_row = 0
 result_array = []
 
 # Change this according to your folder path
-path = "C:\\Advantech\\WISE750\\feature\\ch1"
+path = "C:\\Advantech\\WISE750\\feature\\ch0"
 
 try:
     while True:

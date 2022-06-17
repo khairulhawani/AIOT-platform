@@ -6,7 +6,9 @@ def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
-    channel.queue_declare(queue='sensor')
+    channel.queue_declare(queue='sensor1')
+    channel.queue_declare(queue='sensor2')
+    channel.queue_declare(queue='sensor3')
 
     mydb = mysql.connector.connect(
         host="localhost",

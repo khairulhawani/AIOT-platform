@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 import mysql.connector
 from mysql.connector import Error
 import pickle
@@ -15,7 +16,7 @@ try:
             password="user",
             database="mydb"
         )
-        rightnow = datetime.now()
+        rightnow = datetime.now() - timedelta(hours=8) #datetime.datetime.now(datetime.timezone.utc)
         #rightnow = '2022-06-25 20:28:37'
         index_row = 0
         last_row = 0
@@ -49,8 +50,7 @@ try:
                 mycursor = connection.cursor()
                 sql = "INSERT INTO tb_closet (timestamp_new, peaktopeak_value, label) VALUES ('" + str(timestamp_new) + "', " + str(peaktopeak_value) + ", " + (','.join(label)) + ")"
                 mycursor.execute(sql)
-                connection.commit()
-        
+                connection.commit()       
 
         last_row = index_row
         index_row = 0

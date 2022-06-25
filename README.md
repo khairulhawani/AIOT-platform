@@ -112,7 +112,7 @@ python3 read_csv.py
 ## Machine Learning Model
 You can access the jupyter use this link
 ```
-(http://203.145.218.196:8888/lab?token=cf3dc96ae66711b6471e335e83fdda86b216f4ca6e0794fb)
+http://203.145.218.196:8888/lab?token=cf3dc96ae66711b6471e335e83fdda86b216f4ca6e0794fb
 
 ```
 

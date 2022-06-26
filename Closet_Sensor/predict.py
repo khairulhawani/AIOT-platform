@@ -5,7 +5,6 @@ import pandas as pd
 from mysql.connector import Error
 import pickle
 import numpy as np
-#import pika
 
 with open('./model_SVC' , 'rb') as f:
     SVC = pickle.load(f)

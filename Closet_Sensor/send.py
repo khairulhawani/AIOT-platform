@@ -8,7 +8,6 @@ import os
 import csv
 import pandas as pd
 import pika
-import time
 
 with open('./model_SVC' , 'rb') as f:
     SVC = pickle.load(f)
@@ -31,7 +30,6 @@ try:
         data = connection.cursor()
         data.execute("SELECT * FROM tb_sensor WHERE sensor_id = '3' AND timestamp >= '" + str(rightnow) + "'") #  
         myresult = data.fetchall()
-        #print(myresult)
 
         for x in myresult:
             index_row += 1
@@ -39,28 +37,25 @@ try:
                 continue
             else:
                 timestamp_new  = x[0]
-                result_array.append(timestamp_new)
                 peaktopeak_value = x[5]
-                result_array.append(peaktopeak_value)
 
                 peaktopeak_reshape = np.array(x[5]).reshape(-1, 1)
                     
                 # check prediction
                 label = SVC.predict(peaktopeak_reshape) 
-                result_array.append(label)
                 
                 connection = pika.BlockingConnection(
                     pika.ConnectionParameters(host='203.145.218.196')) # 203.145.218.196
                 channel = connection.channel()
 
-                msg = str(timestamp_new) + ", " + str(peaktopeak_value) + ", "+ str(label)
+                msg = str(timestamp_new) + ", " + str(peaktopeak_value) + ", "+ str(*label)
+                result_array.append(msg)
 
                 channel.queue_declare(queue='sensor_closet')
                 channel.basic_publish(exchange='', routing_key='sensor_closet', body=(msg).encode('UTF-8'))
                 print(" [x] Sent")
                 connection.close()
         rightnow = timestamp_new
-        time.sleep(1)
 
         last_row = index_row
         index_row = 0
@@ -68,5 +63,5 @@ try:
 
 except KeyboardInterrupt:
     print("Interrupted")
-    #print(pd.DataFrame(result_array))
-    print(result_array[0:2])
+    print(pd.DataFrame(result_array))
+    print(result_array[0])

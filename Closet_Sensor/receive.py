@@ -30,7 +30,7 @@ def main():
 
         # print(mycursor.rowcount, "record inserted.")
 
-        print(" [x] Received %r" % body)
+        # print(" [x] Received %r" % body)
 
     channel.basic_consume(queue='sensor_closet', on_message_callback=callback_sensor_closet, auto_ack=True)
 

@@ -27,7 +27,7 @@ try:
             password="user",
             database="mydb"
         )
-
+        
         data = connection.cursor()
         data.execute("SELECT * FROM tb_sensor WHERE sensor_id = '3' AND timestamp >= '" + str(rightnow) + "'") #  
         myresult = data.fetchall()
@@ -53,8 +53,10 @@ try:
                     pika.ConnectionParameters(host='203.145.218.196')) # 203.145.218.196
                 channel = connection.channel()
 
+                msg = str(timestamp_new) + ", " + str(peaktopeak_value) + ", "+ str(label)
+
                 channel.queue_declare(queue='sensor_closet')
-                channel.basic_publish(exchange='', routing_key='sensor_closet', body=(str(timestamp_new) + ", " + str(peaktopeak_value) + ", "+ str(label)))
+                channel.basic_publish(exchange='', routing_key='sensor_closet', body=(msg).encode('UTF-8'))
                 print(" [x] Sent")
                 connection.close()
         rightnow = timestamp_new
@@ -66,5 +68,5 @@ try:
 
 except KeyboardInterrupt:
     print("Interrupted")
-    print(pd.DataFrame(result_array))
-    print(result_array[0])
+    #print(pd.DataFrame(result_array))
+    print(result_array[0:2])
